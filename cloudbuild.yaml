@@ -1,0 +1,47 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - 'clone'
+  - '--branch=${BRANCH_NAME}'
+  - 'https://github.com/pmutale/kirumba-tool'
+
+- name: 'ubuntu'
+  args:
+  - 'bash'
+  - '-c'
+  - |
+    mkdir -p tool/deploy
+    cp -r kirumba-tool tool/pipeline
+    cd tool
+    cp ../config/app.yaml ./deploy
+
+- name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'install'
+  - '@angular/cli'
+  dir: 'tool/pipeline'
+
+- name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'install'
+  dir: 'tool/pipeline'
+
+- name: 'gcr.io/cloud-builders/npm'
+  args:
+  - 'run'
+  - 'build-prod'
+  dir: 'tool/pipeline'
+
+- name: 'ubuntu'
+  args:
+  - 'bash'
+  - '-c'
+  - |
+    cp -R dist/tool/. ../deploy/dist
+  dir: 'tool/pipeline'
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'app'
+  - 'deploy'
+  dir: 'tool/deploy'
