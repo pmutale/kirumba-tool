@@ -26,7 +26,7 @@ steps:
   - 'install'
   dir: 'tool/pipeline'
 
-- name: 'gcr.io/cloud-builders/npm'
+- name: 'gcr.io/cloud-builders/npm:node-12.0.0'
   args:
   - 'run'
   - 'build-prod'
