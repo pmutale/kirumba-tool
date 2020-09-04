@@ -1,0 +1,17 @@
+runtime: nodejs12
+service: frontend
+
+handlers:
+- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico|svg))$
+  static_files: dist/\1
+  upload: dist/(.*)
+
+- url: /assets/fonts/(.*\.(eot|woff|woff2))$
+  static_files: dist/assets/fonts/\1
+  upload: dist/assets/fonts/(.*)
+
+- url: /.*
+  static_files: dist/index.html
+  upload: dist/index.html
+  secure: always
+  redirect_http_response_code: 301

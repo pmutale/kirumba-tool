@@ -1,0 +1,32 @@
+ Toolbar
+<mat-toolbar color="primary" class="app-header">
+  <div><a *ngIf="isLoggedIn" href="https://www.kirumba.org" target="_blank" class="kirumba email">{{ isLoggedIn }}</a></div>
+  <span class="nav-tool-items">
+    <a *ngIf="!isLoggedIn" mat-button routerLink="login" routerLinkActive="active">Log in</a>
+  </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+ <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password">
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+    </form>
+  </mat-card>
+
+</div>
