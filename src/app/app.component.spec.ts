@@ -25,12 +25,4 @@ describe("AppComponent", () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual("Kirumba");
   });
-
-  // it("should render title", () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement;
-  //   console.log(compiled)
-  //   expect(compiled.querySelector(".login").textContent).toContain("Log in");
-  // });
 });

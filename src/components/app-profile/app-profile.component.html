@@ -1,0 +1,23 @@
+<button mat-mini-fab color="primary" class="avatar-button" [matMenuTriggerFor]="beforeMenu">
+  <mat-icon>home</mat-icon>
+<!--  <img [alt]="user.displayName" [src]="user.photoURL" class="avatar" />-->
+</button>
+
+<mat-menu #beforeMenu="matMenu"  xPosition="before">
+  <mat-card class="profile-card">
+  <mat-card-header>
+    <mat-icon>account_circle</mat-icon>
+    <mat-card-title>{{ user.displayName }}</mat-card-title>
+    <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="user.photoURL" [alt]="user.displayName">
+  <mat-card-content>
+    <p>
+      {{ user.phoneNumber }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="logout()" color="warn" mat-button><mat-icon>settings_power</mat-icon> Sign Out</button>
+  </mat-card-actions>
+  </mat-card>
+</mat-menu>

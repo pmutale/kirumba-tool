@@ -1,32 +1,41 @@
- Toolbar
 <mat-toolbar color="primary" class="app-header">
-  <div><a *ngIf="isLoggedIn" href="https://www.kirumba.org" target="_blank" class="kirumba email">{{ isLoggedIn }}</a></div>
-  <span class="nav-tool-items">
-    <a class="login" *ngIf="!isLoggedIn" mat-button routerLink="login" routerLinkActive="active">Log in</a>
-  </span>
+  <mat-toolbar-row>
+    <span> </span>
+    <span class="spacer"></span>
+    <ng-container *ngIf="user$ | async as user; else loginIcon">
+      <app-profile [user]="user" (logoutClick)="logout()"></app-profile>
+    </ng-container>
+    <ng-template #loginIcon>
+      <button mat-icon-button (click)="login()" matTooltip="Login">
+        <mat-icon aria-hidden="false" aria-label="Login">fingerprint</mat-icon>
+      </button>
+    </ng-template>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
 
- <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-
+<div *ngIf="user$  | async else loginForm">
+  <p>Welcome </p>
+</div>
+<ng-template #loginForm>
+  <div  class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header>
       <mat-card-title id="login">Log in</mat-card-title>
     </mat-card-header>
-
-    <form class="example-form">
+    <form  class="example-form">
       <mat-card-content>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Username">
         </mat-form-field>
-
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Password">
         </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+      <button (click)="login()"  mat-stroked-button color="accent" class="btn-block"><mat-icon aria-hidden="false" aria-label="Login">fingerprint</mat-icon></button>
     </form>
   </mat-card>
 
 </div>
+</ng-template>

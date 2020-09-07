@@ -9,12 +9,18 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import {LogInComponent} from "../components/log-in/log-in.component";
+import { LogInComponent } from "../components/log-in/log-in.component";
+
+import { AppFirebaseModule } from "../components/app-firebase/app-firebase.module";
+import { AppFirebaseComponent } from "../components/app-firebase/app-firebase.component";
+import { AppProfileComponent } from '../components/app-profile/app-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
+    AppFirebaseComponent,
+    AppProfileComponent
 
   ],
   imports: [
@@ -24,7 +30,8 @@ import {LogInComponent} from "../components/log-in/log-in.component";
     BrowserAnimationsModule,
     AngularMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppFirebaseModule
   ],
   providers: [],
   bootstrap: [AppComponent],

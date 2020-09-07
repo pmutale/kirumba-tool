@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "kirumba-app-dev": {
+      "hosting": {
+        "tool": [
+          "kirumba-app-dev"
+        ]
+      }
+    }
+  }
+}
