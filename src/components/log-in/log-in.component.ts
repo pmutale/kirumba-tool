@@ -16,12 +16,12 @@ export class LogInComponent implements OnInit {
   constructor(
     private readonly auth: AuthService,
     private readonly router: Router,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) { }
   public userLoggedIn: any;
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
@@ -29,19 +29,20 @@ export class LogInComponent implements OnInit {
   login() {
     this.auth.loginViaGoogle().pipe(take(1),
         catchError((error) => {
-          this.openSnackBar(error.message, 'ERROR!')
-          console.error(error.message)
+          this.openSnackBar(error.message, "ERROR!");
+          console.error(error.message);
           return EMPTY;
         }),
       )
       .subscribe((response) => {
-        response && this.openSnackBar("User is logged in", 'Welcome!')
+        console.log(`User with ${response.user.email} logged in`);
+        response && this.openSnackBar("User is logged in", "Welcome!"); // lint-disable-line
       });
   }
 
   logout() {
     this.auth.logout().pipe(take(1)).subscribe((response) => {
-        this.openSnackBar('User has logged out', 'Good Bye!')
+        this.openSnackBar("User has logged out", "Good Bye!");
 
       });
   }

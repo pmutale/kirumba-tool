@@ -1,12 +1,12 @@
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { BehaviorSubject, Observable, from } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { auth } from "firebase/app";
+import { BehaviorSubject, Observable, from } from "rxjs";
+import { Injectable } from "@angular/core";
+import { switchMap } from "rxjs/operators";
 
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
   private user: BehaviorSubject<Observable<firebase.User>> = new BehaviorSubject<Observable<firebase.User>>(null);
@@ -31,7 +31,7 @@ export class AuthService {
 //             resolve(user)
 //           } else {
 //             debugger;
-//             reject('no user logged in')
+//             reject("no user logged in")
 //           }
 //         },
 //         error => reject(error)
@@ -44,7 +44,6 @@ export class AuthService {
 // }
 
   loginViaGoogle(): Observable<auth.UserCredential> {
-        console.info(this.afAuth.currentUser)
     return from(this.afAuth.signInWithPopup(new auth.GoogleAuthProvider()));
   }
 

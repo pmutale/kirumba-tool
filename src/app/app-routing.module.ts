@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { LogInComponent } from "../components/log-in/log-in.component";
 import {AngularFireAuthGuard, redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["/"]);
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
   {

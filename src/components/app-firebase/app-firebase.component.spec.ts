@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AppFirebaseComponent } from './app-firebase.component';
+import { AppFirebaseComponent } from "./app-firebase.component";
 
-describe('AppFirebaseComponent', () => {
+describe("AppFirebaseComponent", () => {
   let component: AppFirebaseComponent;
   let fixture: ComponentFixture<AppFirebaseComponent>;
 
@@ -19,7 +19,7 @@ describe('AppFirebaseComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

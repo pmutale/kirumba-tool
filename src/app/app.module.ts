@@ -13,7 +13,7 @@ import { LogInComponent } from "../components/log-in/log-in.component";
 
 import { AppFirebaseModule } from "../components/app-firebase/app-firebase.module";
 import { AppFirebaseComponent } from "../components/app-firebase/app-firebase.component";
-import { AppProfileComponent } from '../components/app-profile/app-profile.component';
+import { AppProfileComponent } from "../components/app-profile/app-profile.component";
 
 @NgModule({
   declarations: [
